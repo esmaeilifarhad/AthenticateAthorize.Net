@@ -1,0 +1,34 @@
+﻿@model  MyFirstAthenticationAthorize.Models.LoginModel
+@{
+    ViewBag.Title = "ورود به سامانه سند فایلی";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+{
+    <div class="logo">
+        <svg height="85" width="85">
+            <circle class="circle" cx="10" cy="10" r="10"></circle>
+            <path class="middlepath" d="M30,0 L0,80 L22,80  Z"></path>
+            <path class="middlepath" d="M33,0 L25,80 L30,80 L38,0 Z"></path>
+            <path class="middlepath" d="M40,0 L33,80 L60,0  Z"></path>
+            <circle class="circle" cx="53" cy="70" r="10"></circle>
+        </svg>
+    </div>
+
+    @Html.AntiForgeryToken();
+    @Html.LabelFor(m => m.UserName)
+    @Html.TextBoxFor(m => m.UserName, new { Class = "number" })
+    @Html.LabelFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password)
+
+
+
+    <button type="submit">ورود به سایت</button>
+
+    if (ViewBag.Error != null)
+    {
+        <h2 class="error">@ViewBag.Error.ToString()</h2>
+    }
+    @Html.ValidationSummary()
+}

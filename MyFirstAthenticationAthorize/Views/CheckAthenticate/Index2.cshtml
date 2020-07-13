@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>برای ورود  به این صفحه باید هم دسترسی Admin و هم دسترسی Guess داشته باشید</h2>
+@if (User.IsInRole("Admin"))
+{
+<p>سلام ادمین</p>
+}
+@if (User.IsInRole("Guess"))
+{
+<p>سلام مهمان</p>
+}
+
